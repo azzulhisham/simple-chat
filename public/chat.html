@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Zulhisham's Chat App.</title>
+        <link rel="icon" href="/img/favicon.png">
+        <link rel="stylesheet" href="/css/styles.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js"></script>
+        <script src="/js/mustache.js"></script>
+
+        <script id="message-Template" type="text/html">
+            <div class="message">
+                <P>
+                    <span class="message__name">{{username}}</span>
+                    <span class="message__meta">{{timeStamp}}</span>
+                </p>
+                <p>{{message}}</p>
+            </div>
+        </script>
+
+        <script id="location-Template" type="text/html">
+            <div class="message">
+                <P>
+                    <span class="message__name">{{username}}</span>
+                    <span class="message__meta">{{timeStamp}}</span>
+                </p>
+                <a href='{{locationLink}}' target="_blank">{{locationDisplay}}</a> 
+            </div>
+        </script>   
+        
+        <script id="sidebar-Template" type="text/html">
+            <h3 class="room-title">{{roomname}}</h3>
+            <h4 class="list-title">Users:</h4>
+            <ul class="users">
+                {{#users}}
+                    <li>
+                        {{username}}
+                    </li>
+                {{/users}}
+            </ul>
+        </script>           
+    </head>
+
+    <body>
+        <div class="chat">
+            <div id="sidebar" class="chat__sidebar">
+               
+            </div>
+            
+            <div class="chat__main">
+                <h4 id="welcomeMsg"></h4>
+                <br/>
+                <div id="messages" class="chat__messages">
+        
+                </div>
+                <br />
+                <div class="compose">
+                    <input type="text" id="messageInput" required autocomplete="off" />
+                    <button id="sendButton">Send</button>
+                    
+                    <br />
+    
+                    <button id="share-location">Share Location</button>
+                    <p id = "status"></p>
+                                       
+                </div>
+            </div>
+        </div>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/chat.js"></script>
+    </body>
+
+    <footer>
+
+    </footer>
+</html>
