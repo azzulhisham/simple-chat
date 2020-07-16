@@ -15,6 +15,8 @@ const io = socketio(server);
 const publicDirPath = path.join(__dirname, '../public');
 const templatesDirPath = path.join(__dirname, './templates');
 
+app.set('port', port);
+
 // setup handlebars engine & views path
 //app.set('view engine', 'hbs');
 //app.set('views', templatesDirPath);
@@ -88,3 +90,20 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
     console.log('web server is up on port ' + port);
 });
+
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+  
+    if (isNaN(port)) {
+      // named pipe
+      return val;
+    }
+  
+    if (port >= 0) {
+      // port number
+      return port;
+    }
+  
+    return false;
+  }
+  
